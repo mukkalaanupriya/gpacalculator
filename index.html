@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPA Calculator</title>
+    <style>
+        body {
+            background-image: url('C:/Users/mukka/Downloads/gpa.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: orange;
+            text-align: center;
+            font-size: 2.85vw;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            font-size: 20px;
+            width: calc(100% - 22px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color:pink;
+            color:black;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color:powderblue;
+        }
+
+        #result {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+        .hidden {
+            display: none; /* CSS class to hide elements */
+        }
+    </style>
+    <script>
+        function calculateCGPA() {
+            const numberOfSemesters = parseInt(document.getElementById("numSemesters").value);
+            let sum = 0;
+            let sum2 = 0;
+
+            for (let i = 1; i <= numberOfSemesters; i++) {
+                const sgpa = parseFloat(document.getElementById(`sgpa${i}`).value);
+                const credits = parseFloat(document.getElementById(`credits${i}`).value);
+                sum += sgpa * credits;
+                sum2 += credits;
+            }
+
+           const result = sum / sum2; 
+           document.getElementById("result").innerHTML = `<b>Your CGPA is: ${result.toFixed(2)}</b>`;
+           document.getElementById("result").style.display = "block";        
+           document.querySelector("form").classList.add("hidden");        
+ }
+
+        function createSemesterInputs() {
+            const numberOfSemesters = parseInt(document.getElementById("numSemesters").value);
+            const semesterInputs = document.getElementById("semesterInputs");
+            semesterInputs.innerHTML = "";
+
+            for (let i = 1; i <= numberOfSemesters; i++) {
+                semesterInputs.innerHTML += `
+                    <div class="form-group">
+                        <label>SGPA of Semester ${i}:</label>
+                        <input type="number" id="sgpa${i}" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Credits of Semester ${i}:</label>
+                        <input type="number" id="credits${i}" step="0.01" required>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); calculateCGPA();">
+        <h1>SVUCE GPA CALCULATOR</h1>
+        <div class="form-group">
+            <label for="numSemesters">Enter number of semesters:</label>
+            <input type="number" id="numSemesters" name="numSemesters" required>
+        </div>
+        <button type="button" onclick="createSemesterInputs()">Create Inputs</button>
+        <div id="semesterInputs"></div>
+        <button type="submit">Calculate CGPA</button>
+    </form>
+    <p id="result"></p>
+</body>
+</html>
