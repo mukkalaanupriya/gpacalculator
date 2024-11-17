@@ -1,0 +1,72 @@
+body {
+            background-image: url('https://github.com/mukkalaanupriya/gpacalculator/blob/main/gpa.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: orange;
+            text-align: center;
+            font-size: 2.85vw;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            font-size: 20px;
+            width: calc(100% - 22px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color:pink;
+            color:black;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color:powderblue;
+        }
+
+        #result {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+        .hidden {
+            display: none; /* CSS class to hide elements */
+        }
